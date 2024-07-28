@@ -1,9 +1,10 @@
-// package com.clinical.api.repositories;
+package com.clinical.clinicalapi.repositories;
 
-// import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-// import com.clinical.api.models.ClinicalData;
+import com.clinical.clinicalapi.models.ClinicalData;
 
-// public interface ClinicalDataRepo extends JpaRepository<ClinicalData, Integer>{
+
+public interface ClinicalDataRepo extends JpaRepository<ClinicalData, Integer>{
     
-// }
+}
