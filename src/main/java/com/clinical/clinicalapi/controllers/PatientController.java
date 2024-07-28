@@ -1,3 +1,4 @@
+package com.clinical.clinicalapi.controllers;
 // package com.clinical.api.endpoints;
 
 // import java.util.List;

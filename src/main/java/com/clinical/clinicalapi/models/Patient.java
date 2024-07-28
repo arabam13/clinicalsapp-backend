@@ -1,59 +1,65 @@
-// package com.clinical.api.models;
-// import java.util.List;
+package com.clinical.clinicalapi.models;
+import java.util.List;
 
-// import jakarta.persistence.CascadeType;
-// import jakarta.persistence.Entity;
-// import jakarta.persistence.FetchType;
-// import jakarta.persistence.GeneratedValue;
-// import jakarta.persistence.GenerationType;
-// import jakarta.persistence.Id;
-// import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-// @Entity
-// public class Patient {
-//     @Id
-//     @GeneratedValue(strategy=GenerationType.IDENTITY)
-//     private int id;
-//     private String lastName;
-//     private String firstName;
-//     private int age;
-//     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy = "patient")
-//     private List<ClinicalData> clinicalData;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
-//     public int getId() {
-//         return id;
-//     }
 
-//     public void setId(int id) {
-//         this.id = id;
-//     }
+@Entity
+public class Patient {
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id;
+    private String lastName;
+    private String firstName;
+    private int age;
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy = "patient")
+    @JsonManagedReference
+    @JsonIgnore
+    private List<ClinicalData> clinicalData;
 
-//     public String getLastName() {
-//         return lastName;
-//     }
+    public int getId() {
+        return id;
+    }
 
-//     public void setLastName(String lastName) {
-//         this.lastName = lastName;
-//     }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-//     public String getFirstName() {
-//         return firstName;
-//     }
+    public String getLastName() {
+        return lastName;
+    }
 
-//     public void setFirstName(String firstName) {
-//         this.firstName = firstName;
-//     }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-//     public int getAge() {
-//         return age;
-//     }
+    public String getFirstName() {
+        return firstName;
+    }
 
-//     public void setAge(int age) {
-//         this.age = age;
-//     }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-//     public List<ClinicalData> getClinicalData() {
-//         return clinicalData;
-//     }
+    public int getAge() {
+        return age;
+    }
 
-// }
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public List<ClinicalData> getClinicalData() {
+        return clinicalData;
+    }
+
+}
