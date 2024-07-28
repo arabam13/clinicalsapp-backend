@@ -17,7 +17,8 @@ public class PatientMapper {
         Patient patient = new Patient();
         patient.setFirstName(dto.firstName());
         patient.setLastName(dto.lastName());
-        patient.setAge(dto.age());
+        Integer age = Integer.valueOf(dto.age());
+        patient.setAge(age);
         return patientRepo.save(patient);
     }
     

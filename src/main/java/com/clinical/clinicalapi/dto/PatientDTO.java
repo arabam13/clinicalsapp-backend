@@ -8,7 +8,7 @@ public record PatientDTO(
     @NotEmpty
     String lastName,
     @NotEmpty
-    int age
+    String age
 ) {
     
 }
