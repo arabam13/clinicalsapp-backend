@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,14 +23,11 @@ public class PatientController {
 
     @GetMapping("/patients")
     public List<Patient> getPatients() {
-        System.out.println("##########################################");
-        System.out.println("GET PATIENTS");
-        System.out.println("##########################################");
         return patientRepo.findAll();
     }
 
     @PostMapping("/patients")
-    public Patient createPatient(Patient patient) {
+    public Patient createPatient(@RequestBody Patient patient) {
         return patientRepo.save(patient);
     }
 
