@@ -1,0 +1,4 @@
+FROM openjdk:17-jdk-alpine
+VOLUME /tmp
+ADD target/clinicalapi-0.0.1-SNAPSHOT.jar clinicalapi-0.0.1-SNAPSHOT.jar
+ENTRYPOINT [ "java", "-jar", "clinicalapi-0.0.1-SNAPSHOT.jar" ]
