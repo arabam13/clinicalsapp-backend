@@ -1,3 +1,7 @@
+# start colima environme,t
+
+colima start --runtime docker --kubernetes=false
+
 # Setup the postgresql container:
 
 docker-compose -f docker-compose.yml -d
