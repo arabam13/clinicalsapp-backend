@@ -2,9 +2,9 @@ package com.clinical.clinicalapi.controllers;
 
 
 import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,16 +35,21 @@ public class ClinicalDataController {
         ClinicalData clinicalData = new ClinicalData();
         clinicalData.setComponentName(dto.componentName());
         clinicalData.setComponentValue(dto.componentValue());
-        // Convert to LocalDate
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate localDate = LocalDate.parse(dto.measuredDateTime(), formatter);
 
-        // Convert LocalDate to LocalDateTime at start of day (midnight)
-        LocalDateTime localDateTime = localDate.atStartOfDay();
+        // Define the formatter for the input string
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
+        // Parse the string to LocalDateTime
+        try {
+            // Parse the string to LocalDateTime
+            LocalDateTime localDateTime = LocalDateTime.parse(dto.measuredDateTime(), formatter);
+            // Convert LocalDateTime to Timestamp
+            Timestamp timestamp = Timestamp.valueOf(localDateTime);
+            clinicalData.setMeasuredDateTime(timestamp);
+        } catch (DateTimeParseException e) {
+            // Handle the exception, e.g., log the error or throw a custom exception
+            throw new IllegalArgumentException("Invalid date format: " + dto.measuredDateTime(), e);
+        }
 
-        // Convert to Timestamp
-        Timestamp timestamp = Timestamp.valueOf(localDateTime);
-        clinicalData.setMeasuredDateTime(timestamp);
         Integer patientId = Integer.valueOf(dto.patientId());
         // Associer le patient
         Patient patient = patientRepo.findById(patientId).orElseThrow(() -> new IllegalArgumentException("Patient ID n'existe pas dans la base de données."));
