@@ -37,7 +37,7 @@ public class ClinicalDataController {
         clinicalData.setComponentValue(dto.componentValue());
 
         // Define the formatter for the input string
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
         // Parse the string to LocalDateTime
         try {
             // Parse the string to LocalDateTime
