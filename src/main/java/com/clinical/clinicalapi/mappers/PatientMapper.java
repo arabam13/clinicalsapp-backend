@@ -24,7 +24,7 @@ public class PatientMapper {
     }
 
     public PatientResponseDTO toResponsePatient(Patient patient){
-        return new PatientResponseDTO(patient.getFirstName(), patient.getLastName(), patient.getAge(), patient.getClinicalData());
+        return new PatientResponseDTO(patient.getId(), patient.getFirstName(), patient.getLastName(), patient.getAge(), patient.getClinicalData());
     }
     
 }
