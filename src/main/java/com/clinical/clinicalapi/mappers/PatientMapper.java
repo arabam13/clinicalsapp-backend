@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.clinical.clinicalapi.dto.PatientDTO;
+import com.clinical.clinicalapi.dto.PatientResponseDTO;
 import com.clinical.clinicalapi.models.Patient;
 import com.clinical.clinicalapi.repositories.PatientRepo;
 
@@ -20,6 +21,10 @@ public class PatientMapper {
         Integer age = Integer.valueOf(dto.age());
         patient.setAge(age);
         return patientRepo.save(patient);
+    }
+
+    public PatientResponseDTO toResponsePatient(Patient patient){
+        return new PatientResponseDTO(patient.getFirstName(), patient.getLastName(), patient.getAge(), patient.getClinicalData());
     }
     
 }

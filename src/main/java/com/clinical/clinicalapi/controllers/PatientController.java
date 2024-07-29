@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.clinical.clinicalapi.dto.PatientDTO;
+import com.clinical.clinicalapi.dto.PatientResponseDTO;
 import com.clinical.clinicalapi.mappers.PatientMapper;
 import com.clinical.clinicalapi.models.Patient;
 import com.clinical.clinicalapi.repositories.PatientRepo;
@@ -39,7 +40,8 @@ public class PatientController {
     }
 
     @GetMapping("/patients/{id}")
-    public Patient getPatient(@PathVariable("id") Integer id) {
-        return patientRepo.findById(id).get();
+    public PatientResponseDTO getPatient(@PathVariable("id") Integer id) {
+        // return patientRepo.findById(id).get();
+        return patientMapper.toResponsePatient(patientRepo.findById(id).get());
     }
 }

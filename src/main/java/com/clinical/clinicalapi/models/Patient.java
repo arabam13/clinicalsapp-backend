@@ -26,6 +26,16 @@ public class Patient {
     @JsonIgnore
     private List<ClinicalData> clinicalData;
 
+    public Patient() {
+    }
+
+    public Patient(String lastName, String firstName, int age, List<ClinicalData> clinicalData) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.age = age;
+        this.clinicalData = clinicalData;
+    }
+
     public int getId() {
         return id;
     }
