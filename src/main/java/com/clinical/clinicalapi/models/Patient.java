@@ -2,7 +2,6 @@ package com.clinical.clinicalapi.models;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -22,18 +21,11 @@ public class Patient {
     private String firstName;
     private int age;
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy = "patient")
-    @JsonManagedReference
+    // @JsonManagedReference
     @JsonIgnore
     private List<ClinicalData> clinicalData;
 
     public Patient() {
-    }
-
-    public Patient(String lastName, String firstName, int age, List<ClinicalData> clinicalData) {
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.age = age;
-        this.clinicalData = clinicalData;
     }
 
     public int getId() {

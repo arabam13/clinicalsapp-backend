@@ -2,8 +2,6 @@ package com.clinical.clinicalapi.models;
 
 import java.sql.Timestamp;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -23,8 +21,11 @@ public class ClinicalData {
     private Timestamp measuredDateTime;
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="patient_id", nullable=false)
-    @JsonBackReference
+    // @JsonBackReference
     private Patient patient;
+
+    public ClinicalData() {
+    }
 
     public int getId() {
         return id;
@@ -60,6 +61,10 @@ public class ClinicalData {
 
     public Patient getPatient() {
         return patient;
+    }
+
+    public void setPatient(Patient patient){
+        this.patient = patient;
     }
 
 }

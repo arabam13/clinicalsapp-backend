@@ -30,8 +30,9 @@ public class PatientController {
     PatientMapper patientMapper;
 
     @GetMapping("/patients")
-    public List<Patient> getPatients() {
-        return patientRepo.findAll();
+    public List<PatientResponseDTO> getPatients() {
+        List<Patient> patients = patientRepo.findAll();
+        return patients.stream().map(patientMapper::toResponsePatient).toList();
     }
 
     @PostMapping("/patients")
