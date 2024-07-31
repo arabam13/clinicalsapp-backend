@@ -19,3 +19,8 @@ spring:
   sql:
     init:
       mode: always
+application:
+  cors:
+    allowed-origins: http://localhost:3000,http://54.211.242.156:8088,http://54.211.242.156:8080
+server:
+  port: 8088
