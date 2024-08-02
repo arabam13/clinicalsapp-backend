@@ -21,6 +21,6 @@ spring:
       mode: always
 application:
   cors:
-    allowed-origins: http://localhost:3000,http://54.211.242.156:8080,http://54.211.242.156:8088,http://54.211.242.156,http://ec2-54-211-242-156.compute-1.amazonaws.com:8080,http://ec2-54-211-242-156.compute-1.amazonaws.com:8088,http://ec2-54-211-242-156.compute-1.amazonaws.com
+    allowed-origins: http://localhost:3000,http://54.211.242.156:8080,http://54.211.242.156:8088,http://54.211.242.156
 server:
   port: 8088
